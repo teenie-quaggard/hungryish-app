@@ -32,8 +32,8 @@ const recipeIngredients = document.getElementById('recipeIngredients');
 
 const generateDataButton = document.getElementById('generateDataButton');
 generateDataButton.addEventListener('click', () => {
-  const ingredient = ingredients.value;
-  
+  const ingredient = ingredients.value.split(',').map(ingredient => ingredient.trim()).join();
+
   function reqListener () {
     const response = JSON.parse(this.responseText);
     const randomRecipe = getRandomInt(response.results.length);
@@ -44,11 +44,11 @@ generateDataButton.addEventListener('click', () => {
 
   const request = new XMLHttpRequest();
   request.addEventListener("load", reqListener);
-  request.open("GET", `http://www.recipepuppy.com/api/?i=${ingredient.trim()}&q=dinner&p=3`);
+  request.open("GET", `http://www.recipepuppy.com/api/?i=${ingredient}&q=dinner&p=3`);
   request.send();
 
   console.log(ingredient);
-  console.log(`http://www.recipepuppy.com/api/?i=${ingredient.trim()}&q=dinner&p=3`)
+  console.log(`http://www.recipepuppy.com/api/?i=${ingredient}&q=dinner&p=3`)
 });
 
 
