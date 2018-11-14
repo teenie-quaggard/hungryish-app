@@ -27,16 +27,17 @@
 // xhr2.open("GET", url, true);
 // xhr2.send();
 const ingredients = document.getElementById('inputIngredients');
-const ingredient = ingredients.value;
-console.log(ingredient);
 
 const recipeIngredients = document.getElementById('recipeIngredients');
 
 const generateDataButton = document.getElementById('generateDataButton');
 generateDataButton.addEventListener('click', () => {
+  const ingredient = ingredients.value;
+  
   function reqListener () {
     const response = JSON.parse(this.responseText);
     const randomRecipe = getRandomInt(response.results.length);
+
     document.getElementById('recipe').textContent = response.results[randomRecipe].title;
     recipeIngredients.textContent = response.results[randomRecipe].ingredients;
   }
@@ -46,7 +47,11 @@ generateDataButton.addEventListener('click', () => {
   request.open("GET", `http://www.recipepuppy.com/api/?i=${ingredient.trim()}&q=dinner&p=3`);
   request.send();
 
+  console.log(ingredient);
+  console.log(`http://www.recipepuppy.com/api/?i=${ingredient.trim()}&q=dinner&p=3`)
 });
+
+
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
