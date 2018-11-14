@@ -1,4 +1,4 @@
-# hungryish?
+# hungryish? :hamburger:
 Unable to make a decision about what to watch?
 Hungryish is an app to choose your evening plans. Matching movies with recipes.
 
