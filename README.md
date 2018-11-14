@@ -10,8 +10,8 @@ Hungryish is an app to choose your evening plans. Matching movies with recipes.
 5. Uses grids
 
 ## APIs to Use
-1. https://www.themoviedb.org/documentation/api
-2. http://www.recipepuppy.com/about/api/
+1. [The Movie DB](https://www.themoviedb.org/documentation/api)
+2. [Recipe Puppy](http://www.recipepuppy.com/about/api/)
 
 ## Stretch goals
 1. Additional API 
