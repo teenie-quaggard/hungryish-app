@@ -15,29 +15,49 @@ document.getElementById("button").addEventListener("click", () => {
   xhr2.onreadystatechange = function() {
     if (xhr2.readyState == 4 && xhr2.status == 200) {
       var recipeApi = JSON.parse(xhr2.responseText);
-      // Give a random number to get a rondom receipe title
+      // Give a random number to get a random receipe title
       var title = recipeApi.results[randomRecipe].title;
       var ingredients = recipeApi.results[randomRecipe].ingredients;
-      var pic = recipeApi.results[randomRecipe].thumbnail;
+      //var pic = recipeApi.results[randomRecipe].thumbnail;
 
       console.log(recipeApi);
       // the title displays on website
       document.getElementById("recipe_name").textContent = title;
       document.getElementById("recipe_ingredients").textContent = ingredients;
-      document.getElementById("recipe_image").src = pic;
+      //document.getElementById("recipe_image").src = pic;
 
       // If there is no recipe image, hide broken link; else display the image
-      if (pic == "") {
-        document.getElementById("recipe_image").style.display="none";
-      } else {
+      // if (pic == "") {
+      //   document.getElementById("recipe_image").style.display="none";
+      // } else {
         document.getElementById("recipe_image").style.display="block";
-      }
+      //}
     }
   };
 
   xhr2.open("GET", url2, true);
   xhr2.send();
+
+  // Replace food image with .gif
+  const randomGIF = Math.floor(Math.random() * 24);
+  const giphyApi = new XMLHttpRequest();
+  const giphyUrl = `http://api.giphy.com/v1/gifs/search?q=food&api_key=${config.giphyAPI}`
+
+  giphyApi.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+         let giphy = document.getElementById("recipe_image");
+         console.log(giphy);
+         gifObj = JSON.parse(giphyApi.responseText)
+         giphy.src = gifObj.data[randomGIF].images.fixed_width.url;
+      }
+  };
+  giphyApi.open("GET", giphyUrl, true);
+  giphyApi.send();
 });
+
+
+
+
 /*****************************Movie shit******************************************/
 //Hide intial broken poster link
 document.getElementById("movie_poster").style.display="none";
