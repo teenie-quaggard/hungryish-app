@@ -1,3 +1,4 @@
+
 /*****************************Movie shit******************************************/
 document.getElementById("button").addEventListener("click", () => {
   //generates a random number for both page and title within object
