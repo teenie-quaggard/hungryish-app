@@ -1,0 +1,23 @@
+{
+  "name": "hungryish-app",
+  "version": "1.0.0",
+  "description": "Unable to make a decision about what to watch? Hungryish is an app to choose your evening plans. Matching movies with recipes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape ./scripts/test.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac-15/hungryish-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac-15/hungryish-app/issues"
+  },
+  "homepage": "https://github.com/fac-15/hungryish-app#readme",
+  "devDependencies": {
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.1"
+  }
+}
