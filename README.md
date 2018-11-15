@@ -1,4 +1,4 @@
-# hungryish?
+# hungryish? :hamburger:
 Unable to make a decision about what to watch?
 Hungryish is an app to choose your evening plans. Matching movies with recipes.
 
@@ -18,8 +18,8 @@ https://fac-15.github.io/hungryish-app/
 3. Display movie data on landing page when button is clicked
 
 ## APIs to Use
-1. https://www.themoviedb.org/documentation/api
-2. http://www.recipepuppy.com/about/api/
+1. [The Movie DB](https://www.themoviedb.org/documentation/api)
+2. [Recipe Puppy](http://www.recipepuppy.com/about/api/)
 
 ## Things we learned
 1. CORS (Allow-control-allow-origin)
