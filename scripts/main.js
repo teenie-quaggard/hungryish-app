@@ -1,3 +1,7 @@
+/*****************************Recipe******************************************/
+//Hide initial broken link
+document.getElementById("recipe_image").style.display="none";
+
 document.getElementById("button").addEventListener("click", () => {
   var randomRecipe = Math.floor(Math.random() * 10);
   var randomPageRecipe = Math.floor(Math.random() * 100);
@@ -10,21 +14,23 @@ document.getElementById("button").addEventListener("click", () => {
 
   xhr2.onreadystatechange = function() {
     if (xhr2.readyState == 4 && xhr2.status == 200) {
-      var receipeApi = JSON.parse(xhr2.responseText);
+      var recipeApi = JSON.parse(xhr2.responseText);
       // Give a random number to get a rondom receipe title
-      var title = receipeApi.results[randomRecipe].title;
-      var ingredients = receipeApi.results[randomRecipe].ingredients;
-      var pic = receipeApi.results[randomRecipe].thumbnail;
+      var title = recipeApi.results[randomRecipe].title;
+      var ingredients = recipeApi.results[randomRecipe].ingredients;
+      var pic = recipeApi.results[randomRecipe].thumbnail;
 
-      console.log(receipeApi);
+      console.log(recipeApi);
       // the title displays on website
       document.getElementById("recipe_name").textContent = title;
       document.getElementById("recipe_ingredients").textContent = ingredients;
-      if (pic !== "") {
-        var createImg = document.createElement("img");
-        document.getElementById("recipe_pic").appendChild(createImg);
-        createImg.setAttribute("src", pic);
-        // createImg.className = 'img'
+      document.getElementById("recipe_image").src = pic;
+
+      // If there is no recipe image, hide broken link; else display the image
+      if (pic == "") {
+        document.getElementById("recipe_image").style.display="none";
+      } else {
+        document.getElementById("recipe_image").style.display="block";
       }
     }
   };
@@ -33,6 +39,9 @@ document.getElementById("button").addEventListener("click", () => {
   xhr2.send();
 });
 /*****************************Movie shit******************************************/
+//Hide intial broken poster link
+document.getElementById("movie_poster").style.display="none";
+
 document.getElementById("button").addEventListener("click", () => {
   //generates a random number for both page and title within object
   const randomNumGen = max => Math.floor(Math.random() * Math.floor(max));
@@ -66,6 +75,8 @@ document.getElementById("button").addEventListener("click", () => {
       document.getElementById(
         "movie_poster"
       ).src = `http://image.tmdb.org/t/p/w200/${movieImage}`;
+      //Reveal poster image
+      document.getElementById("movie_poster").style.display="block";
 
       //Adds description of movie to page
       document.getElementById("movie_description").textContent = `${
