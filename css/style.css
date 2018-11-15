@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 button {
   display: flex;
   flex-direction: row;
@@ -22,4 +23,10 @@ button:hover {
   border-bottom: rgb(0, 255, 42);
   border-style: solid;
   border-bottom-width: 5px;
+=======
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 10vw;
+>>>>>>> Stashed changes
 }

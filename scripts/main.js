@@ -22,7 +22,6 @@ document.getElementById("button").addEventListener("click", () => {
       var link = recipeApi.results[randomRecipe].href;
       const gifSearch = title.substr(0, title.indexOf(" "));
 
-      // the title displays on website
       document.getElementById("recipe_ingredients").textContent = ingredients;
       document.getElementById("recipe_image").style.display="block";
       document.getElementById("recipe_link").innerText = title;
@@ -93,6 +92,7 @@ document.getElementById("button").addEventListener("click", () => {
       document.getElementById(
         "movie_poster"
       ).src = `http://image.tmdb.org/t/p/w200/${movieImage}`;
+
       //Reveal poster image
       document.getElementById("movie_poster").style.display = "block";
 
