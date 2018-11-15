@@ -1,8 +1,6 @@
 /*****************************Recipe******************************************/
 //Hide initial broken link
-document.getElementById("recipe_image").style.display="none";
-let gifSearch = "food";
-console.log(gifSearch)
+document.getElementById("recipe_image").style.display = "none";
 
 document.getElementById("button").addEventListener("click", () => {
   var randomRecipe = Math.floor(Math.random() * 10);
@@ -21,16 +19,15 @@ document.getElementById("button").addEventListener("click", () => {
       // Give a random number to get a random receipe title
       var title = recipeApi.results[randomRecipe].title;
       var ingredients = recipeApi.results[randomRecipe].ingredients;
-      gifSearch = title.substr(0, title.indexOf(" "));
-      console.log(gifSearch)
+      var link = recipeApi.results[randomRecipe].href;
+      const gifSearch = title.substr(0, title.indexOf(" "));
 
-      //var pic = recipeApi.results[randomRecipe].thumbnail;
-
-      console.log(recipeApi);
       // the title displays on website
-      document.getElementById("recipe_name").textContent = title;
       document.getElementById("recipe_ingredients").textContent = ingredients;
       document.getElementById("recipe_image").style.display="block";
+      document.getElementById("recipe_link").innerText = title;
+      document.getElementById("recipe_link").href = link;
+
 
       /******************************Giphy Start********************************/
     // Replace food image with .gif
@@ -41,7 +38,6 @@ document.getElementById("button").addEventListener("click", () => {
     giphyApi.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
            let giphy = document.getElementById("recipe_image");
-           console.log(giphy);
            gifObj = JSON.parse(giphyApi.responseText)
            giphy.src = gifObj.data[randomGIF].images.fixed_width.url;
         }
@@ -63,7 +59,7 @@ document.getElementById("button").addEventListener("click", () => {
 
 /*****************************Movie shit******************************************/
 //Hide intial broken poster link
-document.getElementById("movie_poster").style.display="none";
+document.getElementById("movie_poster").style.display = "none";
 
 document.getElementById("button").addEventListener("click", () => {
   //generates a random number for both page and title within object
@@ -82,7 +78,6 @@ document.getElementById("button").addEventListener("click", () => {
     let randomMovie = randomNumGen(20);
     if (movieRequest.readyState == 4 && movieRequest.status == 200) {
       const movies = JSON.parse(movieRequest.responseText);
-      console.log(movies);
 
       //Adds title of movie to page
       document.getElementById("movie_name").textContent =
@@ -99,7 +94,7 @@ document.getElementById("button").addEventListener("click", () => {
         "movie_poster"
       ).src = `http://image.tmdb.org/t/p/w200/${movieImage}`;
       //Reveal poster image
-      document.getElementById("movie_poster").style.display="block";
+      document.getElementById("movie_poster").style.display = "block";
 
       //Adds description of movie to page
       document.getElementById("movie_description").textContent = `${
