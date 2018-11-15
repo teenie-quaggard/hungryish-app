@@ -1,4 +1,4 @@
-/* let's go! */
+
 
 // var xhr = new XMLHttpRequest();
 // var url = 'https://api.themoviedb.org/3/discover/movie?api_key=cb89d5264333858f9881aa9e8e0b5d15&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&certification_country=US&certification=R&sort_by=vote_average.desc';
@@ -10,7 +10,7 @@
 //     }
 // };
 // xhr.open("GET", url, true);
-// // xhr.open("GET", url2, true);
+// // xhr.open("GET", url, true);
 // xhr.send();
 //
 // var xhr2 = new XMLHttpRequest();
@@ -26,36 +26,44 @@
 // };
 // xhr2.open("GET", url, true);
 // xhr2.send();
+
+// Link ingredient input box in HTML to JS
 const ingredients = document.getElementById('inputIngredients');
 
+// Link recipe ingredient list in HTML to JS
 const recipeIngredients = document.getElementById('recipeIngredients');
 
+// Link HTML button to JS
 const generateDataButton = document.getElementById('generateDataButton');
-generateDataButton.addEventListener('click', () => {
-  const ingredient = ingredients.value.split(',').map(ingredient => ingredient.trim()).join();
 
+// Function to return a random recipe in generate data function
+const getRandomRecipe = max => Math.floor(Math.random() * Math.floor(max));
+
+generateDataButton.addEventListener('click', () => {
+
+  // ingredient used to enter multiple ingredients, separated by a comma
+  const ingredient = ingredients.value.split(',').map(ingredient => ingredient.trim()).join();
   function reqListener () {
     const response = JSON.parse(this.responseText);
-    const randomRecipe = getRandomInt(response.results.length);
+    const randomRecipe = getRandomRecipe(response.results.length);
 
+    // Get the title of a random recipe and sets text content of recipe in HTML
     document.getElementById('recipe').textContent = response.results[randomRecipe].title;
+
+    // Sets the text content of recipe ingredients to the ingredients of random recipe
     recipeIngredients.textContent = response.results[randomRecipe].ingredients;
   }
 
   const request = new XMLHttpRequest();
-  request.addEventListener("load", reqListener);
-  request.open("GET", `http://www.recipepuppy.com/api/?i=${ingredient}&q=dinner&p=3`);
-  request.send();
+    request.addEventListener("load", reqListener);
+    request.open("GET", `http://www.recipepuppy.com/api/?i=${ingredient}&q=dinner&p=3`);
+    request.send();
 
-  console.log(ingredient);
+console.log(ingredient);
   console.log(`http://www.recipepuppy.com/api/?i=${ingredient}&q=dinner&p=3`)
 });
 
 
-
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
 
 // function reqListener () {
 //   // console.log(JSON.parse(this.responseText).results[0]);

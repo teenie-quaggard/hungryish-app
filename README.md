@@ -27,6 +27,7 @@ https://fac-15.github.io/hungryish-app/
 2. Highlight cmd+D multi-select highlighted text
 3. shift arrows tab or shift+tab to indent multiple lines
 4. console.dir to show methods on an object/class
+5. using debugger in JS to show what's happening step by step
 
 ## Stretch goals
 1. Additional API
