@@ -7,20 +7,21 @@
     <title>HUNGRYISH</title>
   </head>
   <body>
-    <button id="button">FEELIN' HUNGRYISH?</button>
-    <!-- <div id='recipe_pic'></div> -->
 
+    <button id="button" aria-label="Generate a recipe and movie">FEELIN' HUNGRYISH?</button>
 
-    <h1 id="movie_name"></h1>
-    <h2 id="movie_rating"><h2>
-    <img src="" alt="Poster Image of Chosen Movie" id="movie_poster">
-    <p id="movie_description"></p>
+    <section class="recipe_area">
+      <p id="recipe_name" aria-label="Recipe name"></p>
+      <p id='recipe_ingredients' aria-label="Recipe ingredients"></p>
+      <div id='recipe_pic' aria-label="Recipe GIF"></div>
+    </section>
 
-
-    
-    <h1 id="recipe_name" ><a id='recipe_link' target='_blank' href=""></a> </h1>
-    <h2 id='recipe_ingredients'></h2>
-    <img src="" alt="Image of recipe" id="recipe_image">
+    <section class="movie_area">
+      <h1 id="movie_name" aria-label="Movie name"></h1>
+      <h2 id="movie_rating" aria-label="Movie rating"><h2>
+      <img src="" alt="Poster Image of Chosen Movie" id="movie_poster" aria-label="Movie poster">
+      <p id="movie_description" aria-label="Movie description"></p>
+    </section>
 
     <script src="scripts/config.js" async></script>
     <script src="scripts/main.js" async></script>
