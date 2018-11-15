@@ -1,6 +1,6 @@
 /*****************************Recipe******************************************/
 //Hide initial broken link
-document.getElementById("recipe_image").style.display="none";
+document.getElementById("recipe_image").style.display = "none";
 
 document.getElementById("button").addEventListener("click", () => {
   var randomRecipe = Math.floor(Math.random() * 10);
@@ -19,18 +19,19 @@ document.getElementById("button").addEventListener("click", () => {
       var title = recipeApi.results[randomRecipe].title;
       var ingredients = recipeApi.results[randomRecipe].ingredients;
       var pic = recipeApi.results[randomRecipe].thumbnail;
-
+      var link = recipeApi.results[randomRecipe].href;
       console.log(recipeApi);
       // the title displays on website
-      document.getElementById("recipe_name").textContent = title;
       document.getElementById("recipe_ingredients").textContent = ingredients;
+      document.getElementById("recipe_link").innerText = title;
+      document.getElementById("recipe_link").href = link;
       document.getElementById("recipe_image").src = pic;
 
       // If there is no recipe image, hide broken link; else display the image
       if (pic == "") {
-        document.getElementById("recipe_image").style.display="none";
+        document.getElementById("recipe_image").style.display = "none";
       } else {
-        document.getElementById("recipe_image").style.display="block";
+        document.getElementById("recipe_image").style.display = "block";
       }
     }
   };
@@ -40,7 +41,7 @@ document.getElementById("button").addEventListener("click", () => {
 });
 /*****************************Movie shit******************************************/
 //Hide intial broken poster link
-document.getElementById("movie_poster").style.display="none";
+document.getElementById("movie_poster").style.display = "none";
 
 document.getElementById("button").addEventListener("click", () => {
   //generates a random number for both page and title within object
@@ -76,7 +77,7 @@ document.getElementById("button").addEventListener("click", () => {
         "movie_poster"
       ).src = `http://image.tmdb.org/t/p/w200/${movieImage}`;
       //Reveal poster image
-      document.getElementById("movie_poster").style.display="block";
+      document.getElementById("movie_poster").style.display = "block";
 
       //Adds description of movie to page
       document.getElementById("movie_description").textContent = `${
