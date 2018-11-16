@@ -1,24 +1,43 @@
+"use strict";
+
+//generates a random number for use within functions
+const randomNumGen = max => Math.floor(Math.random() * Math.floor(max));
+//variables to target dom elements
+const hungryishButton = document.getElementById("button");
+const loading = document.getElementById("loader");
+const errorMessage = document.getElementById("error_msg");
+//sets loading spinner display to none
+loading.style.display = "none";
+
 /*****************************Recipe******************************************/
 //Hide initial broken link
 document.getElementById("recipe_image").style.display = "none";
 
-document.getElementById("button").addEventListener("click", () => {
-  var randomRecipe = Math.floor(Math.random() * 10);
-  var randomPageRecipe = Math.floor(Math.random() * 100);
+hungryishButton.addEventListener("click", () => {
+  //disables button until the gif has loaded
+  hungryishButton.disabled = true;
+  //shows loading spinner
+  loading.style.display = "block";
+  //ensures that there is no error message on new click
+  errorMessage.innerText = "";
 
-  var xhr2 = new XMLHttpRequest();
+  const randomRecipe = randomNumGen(10);
+  const randomPageRecipe = randomNumGen(100);
+
+  //recipe api call
+  const xhr2 = new XMLHttpRequest();
   // Use cors-anywhere to avoid CORS
-  var url2 =
+  const url2 =
     "https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?&p=" +
     randomPageRecipe;
 
   xhr2.onreadystatechange = function() {
     if (xhr2.readyState == 4 && xhr2.status == 200) {
-      var recipeApi = JSON.parse(xhr2.responseText);
+      const recipeApi = JSON.parse(xhr2.responseText);
       // Give a random number to get a random receipe title
-      var title = recipeApi.results[randomRecipe].title;
-      var ingredients = recipeApi.results[randomRecipe].ingredients;
-      var link = recipeApi.results[randomRecipe].href;
+      const title = recipeApi.results[randomRecipe].title;
+      const ingredients = recipeApi.results[randomRecipe].ingredients;
+      const link = recipeApi.results[randomRecipe].href;
       const gifSearch = title.substr(0, title.indexOf(" "));
 
       document.getElementById("recipe_ingredients").textContent = ingredients;
@@ -28,7 +47,9 @@ document.getElementById("button").addEventListener("click", () => {
 
       /******************************Giphy Start********************************/
       // Replace food image with .gif
-      const randomGIF = Math.floor(Math.random() * 24);
+      const randomGIF = randomNumGen(24);
+
+      //giphy api call
       const giphyApi = new XMLHttpRequest();
       const giphyUrl = `https://cors-anywhere.herokuapp.com/http://api.giphy.com/v1/gifs/search?q=${gifSearch}&api_key=${
         config.giphyAPI
@@ -36,9 +57,23 @@ document.getElementById("button").addEventListener("click", () => {
 
       giphyApi.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          let giphy = document.getElementById("recipe_image");
-          gifObj = JSON.parse(giphyApi.responseText);
+          const giphy = document.getElementById("recipe_image");
+          const gifObj = JSON.parse(giphyApi.responseText);
           giphy.src = gifObj.data[randomGIF].images.fixed_width.url;
+
+          //allows user to click the button again
+          hungryishButton.disabled = false;
+          //removes loading spinner
+          loading.style.display = "none";
+        }
+        //code to run when the server returns an error
+        else if (this.readyState == 4 && this.status == !200) {
+          //shows error message
+          errorMessage.innerText = "There has been a problem, please try again";
+          //allows user to click the button again
+          hungryishButton.disabled = false;
+          //removes loading spinner
+          loading.style.display = "none";
         }
       };
       giphyApi.open("GET", giphyUrl, true);
@@ -58,21 +93,18 @@ document.getElementById("button").addEventListener("click", () => {
 //Hide intial broken poster link
 document.getElementById("movie_poster").style.display = "none";
 
-document.getElementById("button").addEventListener("click", () => {
-  //generates a random number for both page and title within object
-  const randomNumGen = max => Math.floor(Math.random() * Math.floor(max));
-
+hungryishButton.addEventListener("click", () => {
   //generates a random page under 20 - can increase to access more movies
-  let randomPage = randomNumGen(20);
+  const randomPage = randomNumGen(20);
 
-  //api request using a randomPage
+  //movie api call
   const movieRequest = new XMLHttpRequest();
   const movieUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${
     config.movieAPI
   }&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&certification_country=US&certification=R&sort_by=vote_average.desc&sort_by=vote_count.desc`;
 
   movieRequest.onreadystatechange = function() {
-    let randomMovie = randomNumGen(20);
+    const randomMovie = randomNumGen(20);
     if (movieRequest.readyState == 4 && movieRequest.status == 200) {
       const movies = JSON.parse(movieRequest.responseText);
 
@@ -86,7 +118,7 @@ document.getElementById("button").addEventListener("click", () => {
       }`;
 
       //Adds poster of movie to pages
-      let movieImage = movies.results[randomMovie].poster_path;
+      const movieImage = movies.results[randomMovie].poster_path;
       document.getElementById(
         "movie_poster"
       ).src = `http://image.tmdb.org/t/p/w200/${movieImage}`;
@@ -98,6 +130,13 @@ document.getElementById("button").addEventListener("click", () => {
       document.getElementById("movie_description").textContent = `${
         movies.results[randomMovie].overview
       }`;
+    } else if (this.readyState == 4 && this.status == !200) {
+      //shows error message
+      errorMessage.innerText = "There has been a problem, please try again";
+      //allows user to click the button again
+      hungryishButton.disabled = false;
+      //removes loading spinner
+      loading.style.display = "none";
     }
   };
   movieRequest.open("GET", movieUrl, true);
