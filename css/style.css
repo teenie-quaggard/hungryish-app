@@ -44,7 +44,7 @@ button {
   border-radius: 50%;
   margin: auto;
   font-family: "Gorditas", cursive;
-  font-size: 160px;
+  font-size: 60px;
 }
 
 button:hover {
@@ -59,13 +59,24 @@ button:hover {
   /* padding: 20px; */
 }
 
-.recipe_area {
+.recipe_area,
+.movie_area {
   background-color: #16ffbd;
-  border-radius: 10%;
+  border-radius: 2%;
+  /* margin-bottom: 55px; */
   /* min-height: 60vh; */
   /* padding: 5px; */
 }
 
+p {
+  font-family: "Raleway", sans-serif;
+  text-transform: initial;
+  font-size: 16px;
+}
+
+#movie_description {
+  padding: 10px;
+}
 #recipe_image {
   padding: 15px;
   /* margin: 5px; */
