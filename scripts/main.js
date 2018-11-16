@@ -2,12 +2,16 @@
 
 //generates a random number for use within functions
 const randomNumGen = max => Math.floor(Math.random() * Math.floor(max));
+const hungryishButton = document.getElementById("button");
 
 /*****************************Recipe******************************************/
 //Hide initial broken link
 document.getElementById("recipe_image").style.display = "none";
 
-document.getElementById("button").addEventListener("click", () => {
+hungryishButton.addEventListener("click", () => {
+  //disables button until the gif has loaded
+  hungryishButton.disabled = true;
+
   const randomRecipe = randomNumGen(10);
   const randomPageRecipe = randomNumGen(100);
 
@@ -47,6 +51,7 @@ document.getElementById("button").addEventListener("click", () => {
           const giphy = document.getElementById("recipe_image");
           const gifObj = JSON.parse(giphyApi.responseText);
           giphy.src = gifObj.data[randomGIF].images.fixed_width.url;
+          hungryishButton.disabled = false;
         }
       };
       giphyApi.open("GET", giphyUrl, true);
@@ -66,7 +71,7 @@ document.getElementById("button").addEventListener("click", () => {
 //Hide intial broken poster link
 document.getElementById("movie_poster").style.display = "none";
 
-document.getElementById("button").addEventListener("click", () => {
+hungryishButton.addEventListener("click", () => {
   //generates a random page under 20 - can increase to access more movies
   const randomPage = randomNumGen(20);
 
