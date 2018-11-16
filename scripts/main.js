@@ -2,7 +2,12 @@
 
 //generates a random number for use within functions
 const randomNumGen = max => Math.floor(Math.random() * Math.floor(max));
+//variables to target dom elements
 const hungryishButton = document.getElementById("button");
+const loading = document.getElementById("loader");
+const errorMessage = document.getElementById("error_msg");
+//sets loading spinner display to none
+loading.style.display = "none";
 
 /*****************************Recipe******************************************/
 //Hide initial broken link
@@ -11,6 +16,10 @@ document.getElementById("recipe_image").style.display = "none";
 hungryishButton.addEventListener("click", () => {
   //disables button until the gif has loaded
   hungryishButton.disabled = true;
+  //shows loading spinner
+  loading.style.display = "block";
+  //ensures that there is no error message on new click
+  errorMessage.innerText = "";
 
   const randomRecipe = randomNumGen(10);
   const randomPageRecipe = randomNumGen(100);
@@ -51,7 +60,20 @@ hungryishButton.addEventListener("click", () => {
           const giphy = document.getElementById("recipe_image");
           const gifObj = JSON.parse(giphyApi.responseText);
           giphy.src = gifObj.data[randomGIF].images.fixed_width.url;
+
+          //allows user to click the button again
           hungryishButton.disabled = false;
+          //removes loading spinner
+          loading.style.display = "none";
+        }
+        //code to run when the server returns an error
+        else if (this.readyState == 4 && this.status == !200) {
+          //shows error message
+          errorMessage.innerText = "There has been a problem, please try again";
+          //allows user to click the button again
+          hungryishButton.disabled = false;
+          //removes loading spinner
+          loading.style.display = "none";
         }
       };
       giphyApi.open("GET", giphyUrl, true);
