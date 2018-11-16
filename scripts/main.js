@@ -1,17 +1,19 @@
+//generates a random number for use within functions
+const randomNumGen = max => Math.floor(Math.random() * Math.floor(max));
+
 /*****************************Recipe******************************************/
 //Hide initial broken link
 document.getElementById("recipe_image").style.display = "none";
 
 document.getElementById("button").addEventListener("click", () => {
-  var randomRecipe = Math.floor(Math.random() * 10);
-  var randomPageRecipe = Math.floor(Math.random() * 100);
+  var randomRecipe = randomNumGen(10);
+  var randomPageRecipe = randomNumGen(100);
 
   var xhr2 = new XMLHttpRequest();
   // Use cors-anywhere to avoid CORS
   var url2 =
     "https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?&p=" +
     randomPageRecipe;
-
 
   xhr2.onreadystatechange = function() {
     if (xhr2.readyState == 4 && xhr2.status == 200) {
@@ -23,26 +25,27 @@ document.getElementById("button").addEventListener("click", () => {
       const gifSearch = title.substr(0, title.indexOf(" "));
 
       document.getElementById("recipe_ingredients").textContent = ingredients;
-      document.getElementById("recipe_image").style.display="block";
+      document.getElementById("recipe_image").style.display = "block";
       document.getElementById("recipe_link").innerText = title;
       document.getElementById("recipe_link").href = link;
 
-
       /******************************Giphy Start********************************/
-    // Replace food image with .gif
-    const randomGIF = Math.floor(Math.random() * 24);
-    const giphyApi = new XMLHttpRequest();
-    const giphyUrl = `http://api.giphy.com/v1/gifs/search?q=${gifSearch}&api_key=${config.giphyAPI}`
+      // Replace food image with .gif
+      const randomGIF = randomNumGen(24);
+      const giphyApi = new XMLHttpRequest();
+      const giphyUrl = `http://api.giphy.com/v1/gifs/search?q=${gifSearch}&api_key=${
+        config.giphyAPI
+      }`;
 
-    giphyApi.onreadystatechange = function() {
+      giphyApi.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-           let giphy = document.getElementById("recipe_image");
-           gifObj = JSON.parse(giphyApi.responseText)
-           giphy.src = gifObj.data[randomGIF].images.fixed_width.url;
+          let giphy = document.getElementById("recipe_image");
+          gifObj = JSON.parse(giphyApi.responseText);
+          giphy.src = gifObj.data[randomGIF].images.fixed_width.url;
         }
-    };
-    giphyApi.open("GET", giphyUrl, true);
-    giphyApi.send();
+      };
+      giphyApi.open("GET", giphyUrl, true);
+      giphyApi.send();
 
       /******************************Giphy end********************************/
     }
@@ -50,20 +53,15 @@ document.getElementById("button").addEventListener("click", () => {
 
   xhr2.open("GET", url2, true);
   xhr2.send();
-
 });
 
 /*****************************Recipe end******************************************/
-
 
 /*****************************Movie shit******************************************/
 //Hide intial broken poster link
 document.getElementById("movie_poster").style.display = "none";
 
 document.getElementById("button").addEventListener("click", () => {
-  //generates a random number for both page and title within object
-  const randomNumGen = max => Math.floor(Math.random() * Math.floor(max));
-
   //generates a random page under 20 - can increase to access more movies
   let randomPage = randomNumGen(20);
 
