@@ -80,6 +80,13 @@ hungryishButton.addEventListener("click", () => {
       giphyApi.send();
 
       /******************************Giphy end********************************/
+    } else if (this.readyState == 4 && this.status == !200) {
+      //shows error message
+      errorMessage.innerText = "There has been a problem, please try again";
+      //allows user to click the button again
+      hungryishButton.disabled = false;
+      //removes loading spinner
+      loading.style.display = "none";
     }
   };
 
@@ -130,6 +137,13 @@ hungryishButton.addEventListener("click", () => {
       document.getElementById("movie_description").textContent = `${
         movies.results[randomMovie].overview
       }`;
+    } else if (this.readyState == 4 && this.status == !200) {
+      //shows error message
+      errorMessage.innerText = "There has been a problem, please try again";
+      //allows user to click the button again
+      hungryishButton.disabled = false;
+      //removes loading spinner
+      loading.style.display = "none";
     }
   };
   movieRequest.open("GET", movieUrl, true);
