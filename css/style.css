@@ -1,58 +1,90 @@
-button {
-  display: flex;
-  flex-direction: row;
-  background-color: #4caf50; /* Green */
-  border: solid;
-  border-color: #298b16;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 8px;
-  margin: auto;
-  margin-top: -50px;
-  font-family: "Allerta Stencil", sans-serif;
-  font-size: 30px;
-  font-family: "Allerta Stencil", sans-serif;
-}
-
-button:hover {
-  background-color: #337e35;
-  border-bottom: rgb(0, 255, 42);
-  border-style: solid;
-  border-bottom-width: 5px;
-}
 body {
   display: flex;
   flex-direction: column;
-  margin: 10vw;
+  background-color: #f070a1;
+  margin: 7%;
+  /* margin: 10vw; */
+}
+h1 {
+  font-family: "Sirin Stencil", cursive;
+  text-transform: uppercase;
+  text-shadow: 2px 2px #696969;
+}
+
+h2 {
+  font-family: "Sirin Stencil", cursive;
+  text-transform: uppercase;
+}
+
+#feelin {
+  font-size: 28vw;
+  letter-spacing: 4px;
+  text-align: center;
+  line-height: 3px;
+  margin-top: 5vh;
+}
+
+#hungryish {
+  font-size: 15vw;
+}
+
+#page1 {
+  background-color: #f070a1;
+}
+
+button {
+  display: flex;
+  flex-direction: row;
+  background-color: #16ffbd; /* Green */
+  border: solid;
+  border-color: #298b16;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  border-radius: 50%;
+  margin: auto;
+  font-family: "Gorditas", cursive;
+  font-size: 160px;
+}
+
+button:hover {
+  background-color: #12c998;
+  /* border-bottom: rgb(0, 255, 42); */
+  border-style: solid;
+  border-bottom-width: 5px;
 }
 
 .movie_area {
   background-color: aqua;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .recipe_area {
-  background-color: rgb(21, 166, 192);
-  padding: 20px;
+  background-color: #16ffbd;
+  border-radius: 10%;
+  /* min-height: 60vh; */
+  /* padding: 5px; */
 }
 
+#recipe_image {
+  padding: 15px;
+  /* margin: 5px; */
+}
 #container {
-  font-family: "Montserrat", sans-serif;
   text-align: center;
   align-items: center;
   margin-top: 15px;
 }
-
+a {
+  color: black;
+}
 img {
   display: flex;
   justify-content: space-around;
   margin: auto;
 }
-
+/* 
 #recipe_area,
 #movie_area {
   padding: 20px;
-}
+} */
