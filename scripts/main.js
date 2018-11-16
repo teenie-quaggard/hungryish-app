@@ -11,6 +11,7 @@ document.getElementById("button").addEventListener("click", () => {
   const randomRecipe = randomNumGen(10);
   const randomPageRecipe = randomNumGen(100);
 
+  //recipe api call
   const xhr2 = new XMLHttpRequest();
   // Use cors-anywhere to avoid CORS
   const url2 =
@@ -34,6 +35,8 @@ document.getElementById("button").addEventListener("click", () => {
       /******************************Giphy Start********************************/
       // Replace food image with .gif
       const randomGIF = randomNumGen(24);
+
+      //giphy api call
       const giphyApi = new XMLHttpRequest();
       const giphyUrl = `http://api.giphy.com/v1/gifs/search?q=${gifSearch}&api_key=${
         config.giphyAPI
@@ -67,7 +70,7 @@ document.getElementById("button").addEventListener("click", () => {
   //generates a random page under 20 - can increase to access more movies
   const randomPage = randomNumGen(20);
 
-  //api request using a randomPage
+  //movie api call
   const movieRequest = new XMLHttpRequest();
   const movieUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${
     config.movieAPI
