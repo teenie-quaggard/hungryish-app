@@ -9,6 +9,12 @@ For testing purposes it might be best to clone the repo using the link provided 
 
 Please not that sometimes the recipe (particularly the first time that it's run) takes much longer to call and load than the movie, probably due to a workaround for the API call. Be patient with us!
 
+## Known bugs and issues
+- No CSS 
+- No tests 
+- Recipe API takes much longer to return 
+- Sometimes clicking again does not refresh content 
+
 ## Minimum viable product 🎥
 1. An app that randomly generates a movie and a recipe
 2. Uses tape testing
