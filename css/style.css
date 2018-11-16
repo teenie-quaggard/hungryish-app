@@ -1,0 +1,32 @@
+<<<<<<< Updated upstream
+button {
+  display: flex;
+  flex-direction: row;
+  background-color: #4caf50; /* Green */
+  border: solid;
+  border-color: #298b16;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 8px;
+  margin: auto;
+  margin-top: 30px;
+  font-family: "Allerta Stencil", sans-serif;
+  font-size: 30px;
+  font-family: "Allerta Stencil", sans-serif;
+}
+
+button:hover {
+  background-color: #337e35;
+  border-bottom: rgb(0, 255, 42);
+  border-style: solid;
+  border-bottom-width: 5px;
+=======
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 10vw;
+>>>>>>> Stashed changes
+}
