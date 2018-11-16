@@ -51,7 +51,7 @@ hungryishButton.addEventListener("click", () => {
 
       //giphy api call
       const giphyApi = new XMLHttpRequest();
-      const giphyUrl = `http://api.giphy.com/v1/gifs/search?q=${gifSearch}&api_key=${
+      const giphyUrl = `https://cors-anywhere.herokuapp.com/http://api.giphy.com/v1/gifs/search?q=${gifSearch}&api_key=${
         config.giphyAPI
       }`;
 
@@ -80,13 +80,6 @@ hungryishButton.addEventListener("click", () => {
       giphyApi.send();
 
       /******************************Giphy end********************************/
-    } else if (this.readyState == 4 && this.status == !200) {
-      //shows error message
-      errorMessage.innerText = "There has been a problem, please try again";
-      //allows user to click the button again
-      hungryishButton.disabled = false;
-      //removes loading spinner
-      loading.style.display = "none";
     }
   };
 

@@ -1,33 +1,44 @@
 <!DOCTYPE html>
-<link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
 <html lang="en" dir="ltr">
   <head>
+      
+      <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil|Gorditas|Raleway|Sirin+Stencil|Slabo+27px" rel="stylesheet">
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css" />
     <meta charset="utf-8" />
     <title>HUNGRYISH</title>
   </head>
   <body>
+<section id='page1'>
+  
+  <h1 ><span id='feelin'> feelin</span> <span id='hungryish'>hungryish</h1></span></h1>
+  
+  <button id="button" aria-label="Generate a recipe and movie">?</button>
 
-    <button id="button" aria-label="Generate a recipe and movie">FEELIN' HUNGRYISH?</button>
+</section>
+<section id='container'>
     <!-- displays error messages -->
     <span id="error_msg"></span>
     <!-- loading spinner when fetching api calls -->
     <div id="loader"></div>
 
     <section class="recipe_area">
-      <h1 id="recipe_name" ><a id='recipe_link' target='_blank' href="" aria-label="Recipe name"></a> </h1>
+      <h2 id="recipe_name" ><a id='recipe_link' target='_blank' href="" aria-label="Recipe name"></a> </h2>
       <p id='recipe_ingredients' aria-label="Recipe ingredients"></p>
       <img src="" alt="Image of recipe" id="recipe_image" aria-label="Recipe GIF">
     </section>
 
 
     <section class="movie_area">
-      <h1 id="movie_name" aria-label="Movie name"></h1>
+      <h2 id="movie_name" aria-label="Movie name"></h2>
       <h2 id="movie_rating" aria-label="Movie rating"><h2>
       <img src="" alt="Poster Image of Chosen Movie" id="movie_poster" aria-label="Movie poster">
       <p id="movie_description" aria-label="Movie description"></p>
     </section>
-
+  </section>
     <script src="scripts/config.js" async></script>
     <script src="scripts/main.js" async></script>
 
